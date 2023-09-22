@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.example.university:University xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.example.university="https://org/eclipse/example/university">
+  <faculties>
+    <degrees>
+      <courses>
+        <editions>
+          <students>
+            <grades/>
+          </students>
+          <staff>
+            <professors/>
+            <professors/>
+            <professors/>
+          </staff>
+        </editions>
+      </courses>
+    </degrees>
+  </faculties>
+</org.eclipse.example.university:University>

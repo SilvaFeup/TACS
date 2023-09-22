@@ -3,7 +3,7 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="university" nsURI="https://org/eclipse/example/university" nsPrefix="org.eclipse.example.university">
   <eClassifiers xsi:type="ecore:EClass" name="University">
     <eStructuralFeatures xsi:type="ecore:EReference" name="faculties" upperBound="-1"
-        eType="#//Faculty"/>
+        eType="#//Faculty" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="location" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="establishedYear" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -12,7 +12,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="university" lowerBound="1"
         eType="#//University"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="degrees" upperBound="-1"
-        eType="#//Degree"/>
+        eType="#//Degree" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="professors" upperBound="-1"
         eType="#//Professor"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -22,7 +22,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="faculty" lowerBound="1"
         eType="#//Faculty"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="courses" upperBound="-1"
-        eType="#//Course"/>
+        eType="#//Course" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="durationYears" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
@@ -31,7 +31,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="degree" lowerBound="1"
         eType="#//Degree"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="editions" upperBound="-1"
-        eType="#//Edition"/>
+        eType="#//Edition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -40,9 +40,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="course" lowerBound="1"
         eType="#//Course"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="students" upperBound="-1"
-        eType="#//Student"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="professors" upperBound="-1"
-        eType="#//Professor"/>
+        eType="#//Student" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="staff" lowerBound="1" eType="#//StaffEdition"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="semester" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="year" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="startDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
@@ -51,7 +51,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="editions" upperBound="-1"
         eType="#//Edition"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="grades" upperBound="-1"
-        eType="#//Grade"/>
+        eType="#//Grade" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="studentId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateOfBirth" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
@@ -69,5 +69,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="edition" lowerBound="1"
         eType="#//Edition"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="StaffEdition">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="professors" upperBound="-1"
+        eType="#//Professor" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
