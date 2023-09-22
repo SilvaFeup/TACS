@@ -2,6 +2,7 @@
  */
 package bowling.tests;
 
+
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
@@ -42,5 +43,5 @@ public class BowlingAllTests extends TestSuite {
 	public BowlingAllTests(String name) {
 		super(name);
 	}
-
+	
 } //BowlingAllTests

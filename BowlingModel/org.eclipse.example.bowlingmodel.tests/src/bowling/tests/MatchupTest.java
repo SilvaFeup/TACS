@@ -2,10 +2,14 @@
  */
 package bowling.tests;
 
+import org.eclipse.emf.common.util.Diagnostic;
+import org.eclipse.emf.ecore.util.Diagnostician;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+
 import bowling.BowlingFactory;
 import bowling.Game;
 import bowling.Matchup;
-
+import bowling.Player;
 import junit.framework.TestCase;
 
 import junit.textui.TestRunner;
@@ -99,6 +103,22 @@ public class MatchupTest extends TestCase {
 		   Game game = BowlingFactory.eINSTANCE.createGame();
 		   matchup.getGames().add(game);
 		   assertEquals(game.eContainer(), matchup);
+	}
+	
+	public void testValidation() {
+		   Matchup matchup = BowlingFactory.eINSTANCE.createMatchup();
+		   matchup.getGames().add(BowlingFactory.eINSTANCE.createGame());
+		   Diagnostic validate = Diagnostician.INSTANCE.validate(matchup);
+		   assertEquals(Diagnostic.ERROR, validate.getSeverity());
+	}
+	
+	public void testCopy() {
+		
+		   Player player = BowlingFactory.eINSTANCE.createPlayer();
+		   player.setName("Jonas");
+		   Player copy = EcoreUtil.copy(player);
+		   assertNotSame(player, copy);
+		   assertEquals(player.getName(), copy.getName());
 	}
 
 } //MatchupTest
