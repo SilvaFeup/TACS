@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<org.eclipse.example.bowling:League xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.example.bowling="https://org/eclipse/example/bowling" name="Amerika">
+  <players name="João" dateOfBirth="0026-03-24T00:00:00.000+0000"/>
+  <players name="António" dateOfBirth="0021-03-23T00:00:00.000+0000"/>
+</org.eclipse.example.bowling:League>
