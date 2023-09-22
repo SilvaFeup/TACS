@@ -102,14 +102,19 @@ public class MatchupItemProvider extends ItemProviderAdapter implements
 	}
 
 	/**
-	 * This returns the label text for the adapted class.
-	 * <!-- begin-user-doc
-	 * --> <!-- end-user-doc -->
-	 * @generated
-	 */
+	* This returns the label text for the adapted class.
+	*
+	* @generated NOT
+	*/
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_Matchup_type");
+	   if (object instanceof Matchup) {
+	   EList<Game> games = ((Matchup) object).getGames();
+	   if (games != null) {
+	   return "Matchup, Games: " + games.size();
+	   }
+	   }
+	   return getString("_UI_Matchup_type");
 	}
 
 	/**

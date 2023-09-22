@@ -5,12 +5,15 @@ import java.io.IOException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.emf.common.command.BasicCommandStack;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.domain.EditingDomain;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
+import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.swt.widgets.Shell;
 
@@ -22,6 +25,7 @@ import bowling.Tournament;
 public class ExampleTournamentDialog extends AbstractTournamentExampleDialog {
 	
 	Resource resource;
+	private NumberofMatchupListener numberOfMatchupListener;
 
 
 	@Override
@@ -65,21 +69,41 @@ public class ExampleTournamentDialog extends AbstractTournamentExampleDialog {
 
 	@Override
 	protected void initializeListener() {
-		//initialize a listener for the Label displaying the number of Matchups
+		  // initialize a listener for the Label displaying the number of Matchups
+		  numberOfMatchupListener = new NumberofMatchupListener();
+		  getTournament().eAdapters().add(numberOfMatchupListener);
 	}
 
 	private final class NumberofMatchupListener extends AdapterImpl {
-		//Implement a listener to update the Label. Call updateNumberOfMatchups
+		  // Implement a listener to update the Label. Call updateNumberOfMatchups
+		  @Override
+		  public void notifyChanged(Notification msg) {
+		    if (msg.getFeature().equals(
+		      BowlingPackage.eINSTANCE.getTournament_Matchups())) {
+		      updateNumberOfMatchups();    }
+		    super.notifyChanged(msg);
+		  }
 	}
 	
 	@Override
 	protected void initializeTreeviewer(TreeViewer treeViewer) {
-		//initialize a TreeViewer to show the Matchups and Games of the opened Tournament
+		  // initialize a TreeViewer to show the Matchups
+		  // and Games of the opened Tournament
+		  AdapterFactoryLabelProvider labelProvider =
+		new AdapterFactoryLabelProvider(
+		getAdapterFactory());
+		  AdapterFactoryContentProvider contentProvider =
+		new AdapterFactoryContentProvider(
+		getAdapterFactory());
+		  treeViewer.setLabelProvider(labelProvider);
+		  treeViewer.setContentProvider(contentProvider);
+		  treeViewer.setInput(getTournament());
 	}
 
 	@Override
 	public boolean close() {
 		//remove all listeners
+		getTournament().eAdapters().clear();
 		super.close();
 		return true;
 	}

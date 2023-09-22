@@ -223,5 +223,6 @@ public class TournamentImpl extends EObjectImpl implements Tournament {
 		result.append(')');
 		return result.toString();
 	}
+	
 
 } //TournamentImpl
