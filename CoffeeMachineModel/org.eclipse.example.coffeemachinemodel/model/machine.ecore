@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="Machine" nsURI="https://org/eclipse/example/machine" nsPrefix="org.eclipse.example.machine">
+  <eClassifiers xsi:type="ecore:EClass" name="Component">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="WaterTank" eSuperTypes="#//Component">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capacity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CoffeeMaker" eSuperTypes="#//Component">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="brewStrength" eType="#//BrewStrength"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="BrewStrength">
+    <eLiterals name="strong"/>
+    <eLiterals name="medium" value="1"/>
+    <eLiterals name="weak" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Grinder" eSuperTypes="#//Component">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="grindLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MilkFrother" eSuperTypes="#//Component">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="frothingSpeed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CoffeeMachine">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="components" upperBound="-1"
+        eType="#//Component"/>
+  </eClassifiers>
+</ecore:EPackage>
