@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<org.eclipse.example.university:University xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.example.university="https://org/eclipse/example/university">
-  <faculties>
-    <degrees>
-      <courses>
-        <editions>
-          <students>
-            <grades/>
+<org.eclipse.example.university:University xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:org.eclipse.example.university="https://org/eclipse/example/university" name="of Porto" location="Porto" establishedYear="1911">
+  <faculties university="/" name="FEUP" dean="Rui Calçada">
+    <degrees faculty="//@faculties.0" name="M.EIC" description="Mestrado em Engenharia Informática e Computação .... " durationYears="2">
+      <courses degree="//@faculties.0/@degrees.0" code="M.EIC001" name="AC" description="Aprendizagem Computacional">
+        <editions course="//@faculties.0/@degrees.0/@courses.0" semester="1º Semestre AC 2023/2024" year="1" startDate="0017-03-15T00:00:00.000+0000">
+          <students editions="//@faculties.0/@degrees.0/@courses.0/@editions.0" name="Jorge" studentId="2019078540" dateOfBirth="0035-04-24T00:00:00.000+0000">
+            <grades student="//@faculties.0/@degrees.0/@courses.0/@editions.0/@students.0" edition="//@faculties.0/@degrees.0/@courses.0/@editions.0" value="9.5"/>
           </students>
           <staff>
-            <professors/>
-            <professors/>
-            <professors/>
+            <professors editions="//@faculties.0/@degrees.0/@courses.0/@editions.0" name="João " employeeId="111111111" email="joão@fe.up.pt"/>
+            <professors editions="//@faculties.0/@degrees.0/@courses.0/@editions.0" name="Maria" employeeId="222222222" email="maria@fe.up.pt"/>
+            <professors editions="//@faculties.0/@degrees.0/@courses.0/@editions.0" name="Pedro" employeeId="333333333" email="pedro@fe.up.pt"/>
           </staff>
         </editions>
       </courses>
+      <courses degree="//@faculties.0/@degrees.0" code="M.EIC002" name="DS" description="Desenvolvimento de Software de Larga Escala">
+        <editions course="//@faculties.0/@degrees.0/@courses.1" semester="1º Semestre DS 2023/2024" year="1" startDate="0021-03-15T00:00:00.000+0000">
+          <students editions="//@faculties.0/@degrees.0/@courses.1/@editions.0" name="Beatriz" studentId="444444444" dateOfBirth="0019-08-22T00:00:00.000+0000">
+            <grades student="//@faculties.0/@degrees.0/@courses.1/@editions.0/@students.0" edition="//@faculties.0/@degrees.0/@courses.1/@editions.0" value="15.7"/>
+          </students>
+          <staff>
+            <professors editions="//@faculties.0/@degrees.0/@courses.1/@editions.0" name="Humberto" employeeId="555555555" email="humb@fe.up.pt"/>
+          </staff>
+        </editions>
+      </courses>
+    </degrees>
+    <degrees faculty="//@faculties.0" name="L.EIC" description="Licenciatura em engenharia informática e computação" durationYears="3"/>
+  </faculties>
+  <faculties university="/" name="FPCEUP" dean="Luísa Faria">
+    <degrees faculty="//@faculties.1" name="L.PSI" description="Licenciatura em Psicologia" durationYears="3">
+      <courses degree="//@faculties.1/@degrees.0" code="LPSI100" name="MIP" description="Métodos de Investigação em Psicologia"/>
     </degrees>
   </faculties>
 </org.eclipse.example.university:University>
